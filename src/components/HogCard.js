@@ -4,15 +4,22 @@ class HogCard extends React.Component {
 
 
     state = {
-        clicked: false
+        clicked: false,
+        hidden: false
     }
 
-    onClick = () =>{
+    onClick = () => {
         this.setState((prevState, props) => ({
             clicked: !prevState.clicked 
         
     }))
-}
+    }
+
+    onHide = () => {
+        this.setState((prevState) => ({
+            hidden: !prevState.hidden
+        }))
+    }
 
 
     
@@ -20,20 +27,25 @@ class HogCard extends React.Component {
   render() {
     let {id, name, specialty, greased, weight} = this.props
     let imgName = `${name.toLowerCase().replace(/ /ig,"_")}.jpg`
-
+    let hiddenStyle = `style={{display: "none"}}`
 
     return (
-        <div className = "ui four wide column">
-            <div className="ui card">
+        
+        <div className =  "ui four wide column"
+        style = {this.state.hidden? {display:"none"}: {}}
+        >
+            <div className="ui card"> 
                 <div className="image">
                     <img src={require(`../hog-imgs/${imgName}`)}/>
                 </div>
                 <div className="content">
+
                     <a onClick={this.onClick} className="header">{name}</a>
-                    {/* <div className="meta">
-                    <span className="date">{this.props.greased}</span>
-                    </div> */}
-                {this.state.clicked? <div className="description">
+                    <button onClick={this.onHide} 
+                            className={"ui button"}>
+                            Hide
+                        </button>
+                    {this.state.clicked? <div className="description">
                     {specialty}
                     </div> : null }
                     
@@ -46,6 +58,7 @@ class HogCard extends React.Component {
                 </div>
                 </div>
         </div>
+    
     );
   }
 }
