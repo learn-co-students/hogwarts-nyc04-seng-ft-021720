@@ -138,3 +138,26 @@ ul {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.tile-container{
+  background-color: #F5A9BC;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+  margin: 25px 0;
+  border-radius: 10px;
+  justify-content: space-evenly;
+  align-items: space-evenly;
+}
+
+.tile{
+  flex: 1 1 21%;
+  background-color: aquamarine;
+  padding: 0 0 15px 0;
+  border-radius: 22px;
+  overflow: hidden;
+  margin: 15px;
+}
+.tile img{
+  width: 100%;
+}
